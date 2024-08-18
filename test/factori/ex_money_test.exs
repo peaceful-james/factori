@@ -39,7 +39,7 @@ defmodule Factori.ExMoneyTest do
     assert product.__struct__ === ProductSchema
     assert product.id == 1
     assert product.price == Money.new(:EUR, "420.69")
-    assert product.delivery_method_id
+    assert product.delivery_method_id == 1
     assert product.delivery_method.price == Money.new(:EUR, "5.00")
   end
 end
