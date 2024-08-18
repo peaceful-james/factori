@@ -35,10 +35,11 @@ defmodule Factori.ExMoneyTest do
     ProductFactory.bootstrap()
 
     product = ProductFactory.insert(:product)
+    product = Factori.TestRepo.preload(product, :delivery_method)
     assert product.__struct__ === ProductSchema
     assert product.id == 1
     assert product.price == Money.new(:EUR, "420.69")
     assert product.delivery_method_id
-    # assert product.delivery_method.price == Money.new(:EUR, "5.00")
+    assert product.delivery_method.price == Money.new(:EUR, "5.00")
   end
 end
